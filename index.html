@@ -53,9 +53,14 @@
           <h1 data-i18n="tagline">色が戻る瞑想アプリ</h1>
           <p data-i18n="heroLead">呼吸に合わせて、画面に色が広がる。タップでリズムをつかみ、心と画面が少しずつ彩られていく体験を。</p>
           <div class="badges">
-            <!-- ★絶対URLに。公開後に idXXXXXXXXX をアプリIDへ置換してください -->
+            <!-- ★App Storeは絶対URL。審査後にidXXXXXXXXXを実IDへ -->
             <a class="badge" href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank" rel="noopener" data-i18n="cta">App Storeで見る</a>
-            <a class="badge" href="privacy-ja.html" data-i18n="policies">プライバシー</a>
+            <!-- ★プライバシー：言語別リンク切替（JSがhrefを書き換え） -->
+            <a class="badge i18n-href"
+               data-href-ja="privacy-ja.html"
+               data-href-en="privacy-en.html"
+               href="privacy-ja.html"
+               data-i18n="policies">プライバシー</a>
             <a class="badge" href="support.html" data-i18n="support">サポート</a>
           </div>
         </div>
@@ -95,7 +100,7 @@
       <h2 data-i18n="faqTitle">よくある質問</h2>
       <details>
         <summary data-i18n="faq1q">対応OSは？</summary>
-        <p data-i18n="faq1a">iOS 17 以降を推奨しています。</p>
+        <p data-i18n="faq1a">iOS 16 以降を推奨しています。</p>
       </details>
       <details>
         <summary data-i18n="faq2q">課金や広告は？</summary>
@@ -109,9 +114,14 @@
 
     <footer class="footer">
       <div class="container small">
-        <a href="privacy-ja.html" data-i18n="policies">プライバシー</a> ・
+        <!-- ★フッター側も同じ仕組み -->
+        <a class="i18n-href"
+           data-href-ja="privacy-ja.html"
+           data-href-en="privacy-en.html"
+           href="privacy-ja.html"
+           data-i18n="policies">プライバシー</a> ・
         <a href="support.html" data-i18n="support">サポート</a> ・
-        <!-- ★AdMob検出はドメイン直下。フッターリンクはルートの絶対URLへ -->
+        <!-- ★AdMob検出はドメイン直下。リンクは絶対URLへ -->
         <a href="https://daichi-kashimoto.github.io/app-ads.txt" data-i18n="ads">app-ads.txt</a>
         <div style="margin-top:8px" data-i18n="copyright">© 2025 灰色の世界 / Gray World</div>
       </div>
