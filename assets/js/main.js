@@ -49,26 +49,42 @@ const translations = {
   }
 };
 
+// ★言語に応じて aタグのhrefを切り替える
+function updateLangLinks(lang){
+  document.querySelectorAll(".i18n-href").forEach(a=>{
+    const url = (lang === "ja") ? a.dataset.hrefJa : a.dataset.hrefEn;
+    if (url) a.setAttribute("href", url);
+  });
+}
+
 function setLang(lang){
   const t = translations[lang];
   if(!t) return;
+
+  // テキストの置換
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     const raw = t[key] || el.textContent;
     const year = new Date().getFullYear();
     el.textContent = raw.replace("{year}", year);
   });
+
+  // トグルの見た目 / <html lang> / 保存
   document.querySelectorAll(".lang-toggle button").forEach(btn=>btn.classList.remove("active"));
   const btn = document.querySelector(`.lang-toggle button[data-lang='${lang}']`);
   if(btn) btn.classList.add("active");
   document.documentElement.setAttribute("lang", lang === "ja" ? "ja" : "en");
   localStorage.setItem("gw_lang", lang);
+
+  // ★リンクのhrefも更新
+  updateLangLinks(lang);
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
   const saved = localStorage.getItem("gw_lang");
   const init = saved ? saved : ((navigator.language || "").startsWith("ja") ? "ja" : "en");
   setLang(init);
+
   document.querySelectorAll(".lang-toggle button").forEach(btn=>{
     btn.addEventListener("click", ()=> setLang(btn.getAttribute("data-lang")));
   });
