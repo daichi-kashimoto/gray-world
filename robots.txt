@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://daichi-kashimoto.github.io/gray-world/sitemap.xml
